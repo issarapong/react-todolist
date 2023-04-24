@@ -26,7 +26,8 @@ color: $gray;
 
 & > span {
     display: flex;
-    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
 }
 
 }
