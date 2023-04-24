@@ -1,45 +1,104 @@
 $primary: #db4c3f;
-$gray: rgb(234,234,234);
-$sidebar-width: 200px;
-$header-height: 50px;
+$geay: rgb(234,234,234);
+$sidebar-width: 300px;
+$header-hight: 44px;
 
 .container {
     display: grid;
-    grid-template-rows:  $header-height calc(100vh - $header-height);
-    grid-template-columns: $sidebar-width calc(100vw - $sidebar-width);
+    grid-template-rows: $header-hight calc(100vh - 50px);
+    grid-template-columns: $sidebar-width calc(100vw - 200px);
+}
 
+li {
+    list-style: none;
 }
 
 .header {
     background-color: $primary;
-    grid-column: 1/3; //start/end
+    grid-column: 1/3; // start/end
     grid-row: 1/2;
 
-
-//content
-display: flex;
-align-items: center;
-gap: 20px;
-padding: 0.5rem 2rem;
-font-size: 20px;
-color: $gray;
-
-& > span {
+    // Content
     display: flex;
-    cursor: pointer;
-    font-size: 24px;
+    align-items: center;
+    gap: 20px;
+    padding: 0.5rem 2rem;
+    color: $geay;
+
+    // & แทน header
+    & > span {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        cursor: pointer;
+    }
 }
 
-}
 
 .sidebar {
+    // background-color: aquamarine;
     grid-row: 2/3;
     grid-column: 1/2;
-    background-color: antiquewhite;
+    position: sticky;
+    // position: fixed;
+    // left: 0;
+    // top: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 30px;
+
+    &_middle {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
+    
+
+        & > span {
+            display: flex;
+        }
+
+        & > h6 {
+            font-size: 22px;
+        }
+    }
+}
+
+.generic_lists, 
+.project_lists {
+
+    & > li {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 24px;
+        margin: 2px 0;
+        padding: 10px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $geay;
+            border-radius: 10px;
+        }
+
+        & > span {
+            display: flex;
+        }
+
+        & > h6 {
+            font-weight: 500;
+        }
+    }
+}
+
+.active {
+    background-color: $geay;
 }
 
 .content {
     grid-row: 2/3;
     grid-column: 2/3;
-    background-color: saddlebrown;
-} 
+}
