@@ -11,3 +11,11 @@ npx create-react-app .
 ```
 npm start
 ```
+
+## Setup Default
+
+## install scss
+
+```
+npm i sass
+```
