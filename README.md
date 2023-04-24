@@ -19,3 +19,9 @@ npm start
 ```
 npm i sass
 ```
+
+## install react icon
+
+```
+npm i react-icons
+```
