@@ -1,5 +1,5 @@
 import styles from './TodoContent.module.scss' // แยก CSS ใช้เฉพาะส่วน Todo content
-
+import {HiCheck,HiPencil,HiTrash} from 'react-icons/hi'
 export function TodoContent () {
 	const mockTodo = Array.from({length:50},(el,idx)=> idx+1)
 
@@ -13,12 +13,47 @@ export function TodoContent () {
 			<h2>Inbox</h2>
 			<p>{now.toLocaleDateString('en-US',options)}</p>
 		</div>
+		       {/* Add Todo */}
+			   <div className={styles.add__todo}>
+                <span>+</span>
+                <h3>Add task</h3>
+            </div>
 		<div>
 			Add todo
 		</div>
-		<ul>
-		   {mockTodo.map((el)=><li key={el}>{`item-${el}`}</li>)}
-		</ul>
-	</main>
-	)
+		    {/* Todo form */}
+            <form className={styles.todo__form__container}>
+                <input className={styles.todo__form__input} placeholder='Task Name' />
+                <div className={styles.todo__form__footer}>
+				<p className={styles.todo__error}>Title is required</p>
+					<div className={styles.todo__form__buttons}>
+                        <button>Cancel</button>
+                        <button>Add Task</button>
+                    </div>
+                </div>
+            </form>
+
+
+		
+            {/* TodoList */}
+            <ul>
+                {mockTodo.map((el) => (
+                    <li className={styles.todo__item__container} key={el}>
+                        <div className={styles.checkbox__container}>
+                            <HiCheck className={styles.checkbox__icon} />
+                        </div>
+                        <p className={styles.done}>{`item-${el}`}</p>
+
+                        <div className={styles.edit__icon}>
+                            <HiPencil />
+                        </div>
+
+						<div className={styles.delete__icon}>
+                            <HiTrash />
+                        </div>
+                    </li>
+                ))}
+            </ul>
+        </main>
+    );
 }
