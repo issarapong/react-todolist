@@ -24,32 +24,41 @@ export function TodoContent() {
     };
 
     // UPDATE-TODO
-    const handleEditTodo = (todoId,newTask) => {
-        console.log("##",todoId,newTask)
+    // updateValue = {task: "Newtask", status : false}
+    const handleEditTodo = (todoId,updateObj) => {
 
         // Modify Array 
         // #1 FindIndex
         const foundedIndex = todos.findIndex(todoObj=> todoObj.id === todoId)
         // Not founded
         if(foundedIndex == -1) return;
-
         // Founded
         const newTodos = [...todos]
         // let oldTodoObj = newTodos[foundedIndex]
         // oldTodoObj.task = newTask
-        newTodos[foundedIndex] = { ...newTodos[foundedIndex],task : newTask}
+        newTodos[foundedIndex] = { ...newTodos[foundedIndex], ...updateObj}
         // { "id": 4, "task": "In congue. Etiam justo.", "status": false, "due_date": "2023-05-04" },
         setTodos(newTodos)
-        
     }
 
+    const handleDelete = (todoId) => {
+
+        // Logic : Manipulate Array
+
+        const foundedIndex = todos.findIndex(todoObj => todoObj.id === todoId)
+        if(foundedIndex == -1) return;
+        const newTodos = [...todos]
+        newTodos.splice(foundedIndex,1)
+        setTodos(newTodos)
+    }
+ 
 
     // # UI
     return (
         <main className='content'>
             <TodoHeader />
             <AddTodo  onAddTodo={handleAddTodo}/>
-            <TodoLists todos={todos}  onEditTodo={handleEditTodo}/>
+            <TodoLists todos={todos}  onEditTodo={handleEditTodo} onDeleteTodo={handleDelete}/>
         </main>
     );
 }
